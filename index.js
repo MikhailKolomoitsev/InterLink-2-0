@@ -19,12 +19,14 @@ async function getData() {
         .map(el => el.name)
         .filter((element, index, array) => array.indexOf(element) === index)
     console.log(nameColumn);
-    const datesColumn = [...sortedTable]
+    const datesRow = [...sortedTable]
         .map(e=>e.date)
         .filter((element, index, array) => array.indexOf(element) === index)
         .map(e => new Date(e))
-        .sort((a,b)=>a-b)
-    console.log(datesColumn);
+        .sort((a, b) => a-b)
+        .map(e => e.toISOString().slice(0, 10))
+    console.log(datesRow);
+    const datesRowForCheck = [...datesRow]
 }
 
 getData()
